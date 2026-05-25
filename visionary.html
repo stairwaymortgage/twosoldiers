@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Visionary — Jim Blackburn | TwoSoldiers.org</title>
+<meta name="description" content="Jim Blackburn — founder of TwoSoldiers.org. The man behind the mission to connect veterans from opposing conflicts in real-time forgiveness.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Barlow:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/twosoldiers.css">
+<style>
+  /* ===== Visionary page-specific ===== */
+  .visionary-hero {
+    padding: 6rem 2rem 4rem;
+    background:
+      radial-gradient(ellipse at 30% 0%, rgba(178, 58, 80, 0.16), transparent 60%),
+      var(--night);
+  }
+  .visionary-hero-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-photo {
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cherry-bright);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    display: block;
+  }
+  .hero-photo-fallback {
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 3px solid var(--cherry-bright);
+    background: var(--espresso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .hero-text { text-align: left; }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.05em; line-height: 1.9;
+    color: var(--text-warm);
+    margin-bottom: 1.5rem;
+  }
+  .hero-divider {
+    width: 60px; height: 2px;
+    background: var(--cherry-bright);
+    margin: 1.5rem 0;
+  }
+  .hero-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+    font-weight: 500; line-height: 1.6;
+    color: var(--text-primary);
+    max-width: 580px;
+  }
+
+  /* The question section */
+  .question-block {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .question-block .pull-quote {
+    border-left: none;
+    border-top: 1px solid rgba(178, 58, 80, 0.5);
+    border-bottom: 1px solid rgba(178, 58, 80, 0.5);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 720px;
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+  }
+
+  /* Threads grid */
+  .threads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .thread {
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(178, 58, 80, 0.4);
+    border-radius: 4px;
+    background: rgba(44, 24, 16, 0.4);
+  }
+  .thread-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--cherry-bright);
+    margin-bottom: 0.75rem;
+  }
+  .thread-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .thread-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.98rem; font-weight: 400;
+    line-height: 1.7; color: var(--text-body);
+  }
+
+  /* Learn more callout */
+  .learn-more {
+    margin-top: 3rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(178, 58, 80, 0.4);
+    border-bottom: 1px solid rgba(178, 58, 80, 0.4);
+  }
+  .learn-more-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--cherry-bright);
+    margin-bottom: 1rem;
+  }
+  .learn-more-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .learn-more-link {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cherry-bright);
+    text-decoration: none;
+    border-bottom: 1px solid var(--cherry-bright);
+    padding-bottom: 4px;
+    transition: all 0.2s;
+  }
+  .learn-more-link:hover {
+    color: var(--cherry-glow);
+    border-bottom-color: var(--cherry-glow);
+  }
+
+  .cta-section {
+    padding: 7rem 2rem;
+    background: var(--night);
+    text-align: center;
+  }
+  .cta-head {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 400; line-height: 1.4;
+    color: var(--text-primary);
+    max-width: 720px; margin: 0 auto 2.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .visionary-hero { padding: 4rem 1.25rem 3rem; }
+    .visionary-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+    .hero-photo, .hero-photo-fallback {
+      width: 200px; height: 200px;
+      margin: 0 auto;
+    }
+    .hero-text { text-align: center; }
+    .hero-divider { margin: 1.5rem auto; }
+    .cta-section { padding: 5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SHARED HEADER -->
+<div data-include="/partials/header.html"></div>
+
+<!-- HERO -->
+<section class="visionary-hero">
+  <div class="visionary-hero-grid">
+    <img class="hero-photo" src="images/jim.png" alt="Jim Blackburn" onerror="this.outerHTML='<div class=&quot;hero-photo-fallback&quot;>JB</div>'" />
+    <div class="hero-text">
+      <p class="section-label">The Visionary</p>
+      <h1 class="hero-name">Jim Blackburn</h1>
+      <p class="hero-title">
+        Founder · TwoSoldiers.org<br>
+        Author · Songwriter<br>
+        Fort Lauderdale, Florida
+      </p>
+      <div class="hero-divider"></div>
+      <p class="hero-lead">"For what reason does a man who loves his family have to carry the weight of war for the rest of his life — alone?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE IT STARTED -->
+<section class="section section-dark">
+  <div class="container-narrow">
+    <p class="section-label">Where it started</p>
+    <h2 class="section-head">Twenty-six years. One question.</h2>
+    <p class="body-text">Jim Blackburn has been asking the same question since he was seven years old, watching animals love their young without thinking about it — without choosing it. <em>Is love voluntary? Or does it just happen, automatic and unconditional, before thought?</em></p>
+    <p class="body-text">That question — asked first in a college philosophy class at nineteen, asked again while reading the Bible cover to cover at forty, and asked one more time in the document that became TwoSoldiers.org — is the thread that runs through everything he builds.</p>
+    <p class="body-text">Not a product. Not a platform. <strong>A reckoning.</strong></p>
+  </div>
+</section>
+
+<!-- BRIEF BIO -->
+<section class="section">
+  <div class="container-narrow">
+    <p class="section-label">A brief introduction</p>
+    <h2 class="section-head">The man behind the mission.</h2>
+    <p class="body-text">Jim is a top-producing mortgage professional based in Fort Lauderdale, where he and his wife Olga also operate a real estate practice. He has spent more than twenty years helping families build wealth through homeownership — and the same disciplined, long-game mindset that built that career is what underwrites TwoSoldiers.org.</p>
+    <p class="body-text">He is also a writer. He is currently completing a memoir titled <em>My Journey Home</em>, and a thirteen-book spiritual fiction series called <em>The SonFlower and the Bear</em> — both built around the same question that drives TwoSoldiers.</p>
+    <p class="body-text">In the long run, Jim is preparing to run for Mayor of Fort Lauderdale on a platform built around the methodology he developed, called <strong>Character Branding®</strong> — the idea that public ventures should be anchored to a single, durable conviction rather than to shifting opinion.</p>
+    <p class="body-text">TwoSoldiers.org is the conviction.</p>
+
+    <div class="learn-more">
+      <p class="learn-more-label">Learn More About Jim</p>
+      <p class="learn-more-text">For Jim's full story, his work, his writing, and his ongoing projects —</p>
+      <a href="https://jamesjblackburn.com" class="learn-more-link" target="_blank" rel="noopener">Visit JamesJBlackburn.com →</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE QUESTION -->
+<section class="section section-dark">
+  <div class="container-narrow question-block">
+    <p class="section-label">The question that wouldn't go away</p>
+    <p class="pull-quote">"For what reason does a man who loves his family have to carry the weight of war for the rest of his life — alone?"</p>
+    <p class="body-text">That is the question. It has been asked by every soldier who came home and never told anyone what happened. It has been asked by every wife who watched her husband sit silent in the dark. It has been asked by every son who never quite understood the look on his father's face.</p>
+    <p class="body-text">For most of human history, there was no answer. The man who could give the answer was on the other side of the wire. In a different country. Speaking a different language. Carrying the same weight.</p>
+    <p class="body-text"><strong>TwoSoldiers.org is the answer.</strong></p>
+  </div>
+</section>
+
+<!-- THE THREADS -->
+<section class="section">
+  <div class="container">
+    <p class="section-label" style="text-align: center;">What he is building</p>
+    <h2 class="section-head" style="text-align: center;">Four threads. One question.</h2>
+    <p class="body-text" style="text-align: center; max-width: 720px; margin: 0 auto 2rem;">Everything Jim builds is an attempt to answer the same question, in a different form.</p>
+    <div class="threads-grid">
+      <div class="thread">
+        <p class="thread-num">01</p>
+        <p class="thread-title">TwoSoldiers.org</p>
+        <p class="thread-desc">The platform. AI-translated video sessions connecting veterans from opposing conflicts. Real-time forgiveness in 100+ languages.</p>
+      </div>
+      <div class="thread">
+        <p class="thread-num">02</p>
+        <p class="thread-title">The SonFlower and the Bear</p>
+        <p class="thread-desc">A thirteen-book spiritual fiction series exploring unconditional love through allegory. The question, told as a story.</p>
+      </div>
+      <div class="thread">
+        <p class="thread-num">03</p>
+        <p class="thread-title">My Journey Home</p>
+        <p class="thread-desc">A memoir. What a green card marriage, a tragic death, and one hundred women taught him about the love of God.</p>
+      </div>
+      <div class="thread">
+        <p class="thread-num">04</p>
+        <p class="thread-title">Character Branding®</p>
+        <p class="thread-desc">A methodology for building public ventures around a single, anchoring conviction. The framework underneath everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PSALM -->
+<section class="psalm">
+  <div class="container-narrow">
+    <p class="psalm-text">"Thou preparest a table before me<br>in the presence of mine enemies."</p>
+    <p class="psalm-ref">Psalm 23 : 5</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container-narrow">
+    <p class="eyebrow">Reach Out</p>
+    <p class="cta-head">If this question has been in your bones too —<br>or if you have a story to tell, a partnership to offer, or just a word to say —</p>
+    <a href="/contact" class="btn-primary">Start The Conversation →</a>
+  </div>
+</section>
+
+<!-- SHARED FOOTER -->
+<div data-include="/partials/footer.html"></div>
+
+<script src="/js/components.js"></script>
+</body>
+</html>

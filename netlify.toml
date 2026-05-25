@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+
+# Clean URLs — serve /visionary instead of /visionary.html
+[[redirects]]
+  from = "/*.html"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# Pretty URLs configuration
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true

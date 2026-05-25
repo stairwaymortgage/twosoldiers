@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner With Us — TwoSoldiers.org</title>
+<meta name="description" content="Founding partnerships shape what TwoSoldiers.org becomes. Tech companies, foundations, investors, and humanitarian organizations — seats at the table.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Barlow:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/twosoldiers.css">
+<style>
+  /* Partner page-specific */
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .partner-card {
+    padding: 2.25rem 1.75rem;
+    border: 1px solid rgba(178, 58, 80, 0.4);
+    border-radius: 4px;
+    background: rgba(44, 24, 16, 0.4);
+    transition: all 0.2s;
+  }
+  .partner-card:hover {
+    border-color: var(--cherry-bright);
+    transform: translateY(-3px);
+  }
+  .card-icon {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--cherry-bright);
+    margin-bottom: 1.25rem;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+  .card-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.98rem; font-weight: 400;
+    line-height: 1.7; color: var(--text-body);
+  }
+
+  /* Tiers */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .tier {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(178, 58, 80, 0.4);
+    border-radius: 4px;
+    background: var(--night-deep);
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .tier:hover { transform: translateY(-3px); }
+  .tier.featured {
+    border-color: var(--cherry-bright);
+    background:
+      radial-gradient(ellipse at center top, rgba(178, 58, 80, 0.2), transparent 70%),
+      var(--night-deep);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+  .tier-name {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cherry-bright);
+    margin-bottom: 1rem;
+  }
+  .tier-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    font-weight: 700; line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .tier-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem; font-weight: 400;
+    line-height: 1.7; color: var(--text-body);
+    margin-bottom: 1.75rem;
+    min-height: 100px;
+  }
+  .tier-btn {
+    display: inline-block;
+    background: transparent; color: var(--text-primary);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.9rem 1.8rem; text-decoration: none;
+    border: 2px solid var(--cherry-bright);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .tier-btn:hover { background: var(--cherry-bright); color: #FFFFFF; }
+  .tier.featured .tier-btn {
+    background: var(--cherry);
+    border-color: var(--cherry);
+  }
+  .tier.featured .tier-btn:hover {
+    background: var(--cherry-bright);
+    border-color: var(--cherry-bright);
+  }
+
+  /* Roadmap */
+  .roadmap {
+    margin-top: 3rem;
+    list-style: none;
+  }
+  .roadmap-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(178, 58, 80, 0.25);
+  }
+  .roadmap-item:last-child { border-bottom: none; }
+  .roadmap-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--cherry-bright);
+    line-height: 1;
+  }
+  .roadmap-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+  }
+  .roadmap-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem; font-weight: 400;
+    line-height: 1.75; color: var(--text-body);
+  }
+
+  .cta-section {
+    padding: 7rem 2rem;
+    background: var(--night);
+    text-align: center;
+  }
+  .cta-head {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 400; line-height: 1.4;
+    color: var(--text-primary);
+    max-width: 720px; margin: 0 auto 1rem;
+  }
+  .cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-body);
+    max-width: 620px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .roadmap-item { grid-template-columns: 60px 1fr; gap: 1.25rem; padding: 1.5rem 0; }
+    .roadmap-num { font-size: 1.8rem; }
+    .cta-section { padding: 5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SHARED HEADER -->
+<div data-include="/partials/header.html"></div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container-narrow">
+    <p class="section-label">Partner With Us</p>
+    <h1 class="page-headline">Build the table.</h1>
+    <div class="divider-thin"></div>
+    <p class="page-sub">Founding partners shape what TwoSoldiers.org becomes. These are not sponsorship tiers — they are seats at the table.</p>
+  </div>
+</section>
+
+<!-- THE WHY -->
+<section class="section section-dark">
+  <div class="container-narrow">
+    <p class="section-label">The opportunity</p>
+    <h2 class="section-head">A platform that has never existed.</h2>
+    <p class="body-text">TwoSoldiers.org is a live video service connecting veterans from opposing sides of past and present conflicts — in real time, across 100+ languages, with AI translation. Two men. One screen. No agenda. Just the truth.</p>
+    <p class="pull-quote">"The reason is always manufactured by someone who will never bleed."</p>
+    <p class="body-text">AI translation has made this technically possible. The will to build it is what has been missing. <strong>TwoSoldiers.org is that will — made into a platform.</strong></p>
+  </div>
+</section>
+
+<!-- WHO WE ARE LOOKING FOR -->
+<section class="section">
+  <div class="container">
+    <p class="section-label" style="text-align: center;">Who we're looking for</p>
+    <h2 class="section-head" style="text-align: center;">Four types of partners.</h2>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="card-icon"></div>
+        <p class="card-title">Technology Partners</p>
+        <p class="card-desc">Companies building in AI translation, real-time video, platform infrastructure, and content moderation. We need your stack. You need a mission worth building on.</p>
+      </div>
+      <div class="partner-card">
+        <div class="card-icon"></div>
+        <p class="card-title">Humanitarian Organizations</p>
+        <p class="card-desc">Veterans organizations, peace-building foundations, mental health nonprofits, and faith communities with existing networks of soldiers and veterans worldwide.</p>
+      </div>
+      <div class="partner-card">
+        <div class="card-icon"></div>
+        <p class="card-title">Investors &amp; Donors</p>
+        <p class="card-desc">Impact investors, family foundations, and individual donors who believe in long-game missions. Not a quick return. A generational play for something that has never existed.</p>
+      </div>
+      <div class="partner-card">
+        <div class="card-icon"></div>
+        <p class="card-title">Media &amp; Press</p>
+        <p class="card-desc">Journalists, documentary filmmakers, podcasters, and content creators who want to be part of telling the story of two soldiers saying I'm sorry for the first time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING TIERS -->
+<section class="section section-dark">
+  <div class="container">
+    <p class="section-label" style="text-align: center;">Founding partnership tiers</p>
+    <h2 class="section-head" style="text-align: center;">Join the founding circle.</h2>
+    <p class="body-text" style="text-align: center; max-width: 720px; margin: 0 auto;">We are in the earliest stage of development. Founding partners shape what this becomes.</p>
+    <div class="tier-grid">
+      <div class="tier">
+        <p class="tier-name">Builder</p>
+        <p class="tier-amount">$1,000</p>
+        <p class="tier-desc">Named founding supporter. Platform development updates. Early access at launch.</p>
+        <a class="tier-btn" href="/contact">Get In Touch</a>
+      </div>
+      <div class="tier featured">
+        <p class="tier-name">Architect</p>
+        <p class="tier-amount">$10,000</p>
+        <p class="tier-desc">Named founding partner on the platform. Quarterly briefings. Input on feature priorities. Recognition at launch.</p>
+        <a class="tier-btn" href="/contact">Get In Touch</a>
+      </div>
+      <div class="tier">
+        <p class="tier-name">Visionary</p>
+        <p class="tier-amount">Custom</p>
+        <p class="tier-desc">Strategic partnership, technology integration, or major investment. Direct conversation with the founder.</p>
+        <a class="tier-btn" href="/contact">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section">
+  <div class="container-narrow">
+    <p class="section-label">The roadmap</p>
+    <h2 class="section-head">From founding to platform.</h2>
+    <ul class="roadmap">
+      <li class="roadmap-item">
+        <span class="roadmap-num">01</span>
+        <div>
+          <p class="roadmap-title">Foundation — Now</p>
+          <p class="roadmap-desc">Building the email list, validating demand through the YES/NO vote, establishing founding partnerships, and securing initial funding for platform development.</p>
+        </div>
+      </li>
+      <li class="roadmap-item">
+        <span class="roadmap-num">02</span>
+        <div>
+          <p class="roadmap-title">Build — Year One</p>
+          <p class="roadmap-desc">Developing platform infrastructure, integrating AI translation across the initial language set, building moderation protocols, and onboarding first veteran organization partners.</p>
+        </div>
+      </li>
+      <li class="roadmap-item">
+        <span class="roadmap-num">03</span>
+        <div>
+          <p class="roadmap-title">Pilot — Year Two</p>
+          <p class="roadmap-desc">First live sessions between American Vietnam veterans and Vietnamese veterans on all sides — NVA, Viet Cong, and ARVN. Documented with permission. The proof of concept that shows the world what happens when two soldiers finally find each other.</p>
+        </div>
+      </li>
+      <li class="roadmap-item">
+        <span class="roadmap-num">04</span>
+        <div>
+          <p class="roadmap-title">Scale — Year Three and Beyond</p>
+          <p class="roadmap-desc">100+ languages. Global veteran organization partnerships. Documentary series. The most significant veteran healing infrastructure built outside government in a generation.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PSALM -->
+<section class="psalm">
+  <div class="container-narrow">
+    <p class="psalm-text">"Thou preparest a table before me<br>in the presence of mine enemies."</p>
+    <p class="psalm-ref">Psalm 23 : 5</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container-narrow">
+    <p class="eyebrow">Build It With Us</p>
+    <p class="cta-head">Whether you are a tech company, a foundation, an investor, or an individual who believes that veterans deserve this —</p>
+    <p class="cta-sub">Every partnership starts with a conversation.</p>
+    <a href="/contact" class="btn-primary">Start The Conversation →</a>
+  </div>
+</section>
+
+<!-- SHARED FOOTER -->
+<div data-include="/partials/footer.html"></div>
+
+<script src="/js/components.js"></script>
+</body>
+</html>

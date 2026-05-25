@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — TwoSoldiers.org</title>
+<meta name="description" content="Every mission starts with a conversation. Partner with us, share your story, donate, or invite Jim to speak.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Barlow:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/twosoldiers.css">
+<style>
+  /* Contact page-specific */
+  .contact-layout {
+    padding: 5rem 2rem;
+    background: var(--night);
+  }
+  .contact-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+  }
+  .contact-info-head {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.6vw, 2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    line-height: 1.25;
+  }
+  .contact-info-body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--text-body);
+    margin-bottom: 2rem;
+  }
+  .info-divider {
+    width: 60px; height: 2px;
+    background: var(--cherry-bright);
+    margin: 2rem 0;
+  }
+
+  .reason-list {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  .reason {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+    align-items: start;
+  }
+  .reason-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--cherry-bright);
+    margin-top: 0.6rem;
+  }
+  .reason-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text-body);
+  }
+  .reason-text strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  /* Form */
+  .contact-form {
+    background: var(--night-deep);
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(178, 58, 80, 0.3);
+    border-radius: 4px;
+  }
+  .form-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .form-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-body);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .btn-send {
+    width: 100%;
+    background: var(--cherry);
+    color: #FFFFFF;
+    border: none;
+    padding: 1.1rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .btn-send:hover { background: var(--cherry-bright); }
+
+  .form-note {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    text-align: center;
+    margin-top: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .success-msg {
+    display: none;
+    background: var(--espresso);
+    border: 1px solid var(--cherry-bright);
+    border-radius: 4px;
+    padding: 1.75rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .success-msg.active { display: block; }
+  .success-msg p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+  }
+
+  /* Direct contact card */
+  .direct-contact {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background: rgba(44, 24, 16, 0.5);
+    border-left: 3px solid var(--cherry-bright);
+    border-radius: 3px;
+  }
+  .direct-contact-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cherry-bright);
+    margin-bottom: 0.75rem;
+  }
+  .direct-contact-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 720px) {
+    .contact-layout { padding: 3rem 1.25rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-form { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SHARED HEADER -->
+<div data-include="/partials/header.html"></div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container-narrow">
+    <p class="section-label">Get In Touch</p>
+    <h1 class="page-headline">Every mission starts<br><em>with a conversation.</em></h1>
+    <div class="divider-thin"></div>
+    <p class="page-sub">Whether you want to partner, donate, share your story, ask a question, or simply tell us you believe in this — we want to hear from you.</p>
+  </div>
+</section>
+
+<!-- CONTACT LAYOUT -->
+<section class="contact-layout">
+  <div class="contact-grid">
+
+    <!-- LEFT: Why reach out -->
+    <div>
+      <p class="section-label">Why reach out</p>
+      <h2 class="contact-info-head">We read every message.</h2>
+      <p class="contact-info-body">TwoSoldiers.org is an early-stage movement founded by one person with a question he couldn't stop asking. There is no customer service team. There is no PR department. When you write, Jim reads it.</p>
+      <div class="info-divider"></div>
+      <ul class="reason-list">
+        <li class="reason">
+          <div class="reason-dot"></div>
+          <p class="reason-text"><strong>Partnership inquiry</strong> — Tech, humanitarian, media, or investment. Let's talk.</p>
+        </li>
+        <li class="reason">
+          <div class="reason-dot"></div>
+          <p class="reason-text"><strong>You are a veteran</strong> — American, Vietnamese, or from any conflict. Your story matters. We want to hear it.</p>
+        </li>
+        <li class="reason">
+          <div class="reason-dot"></div>
+          <p class="reason-text"><strong>You want to donate</strong> — Every dollar funds the build. Even $10 moves this forward.</p>
+        </li>
+        <li class="reason">
+          <div class="reason-dot"></div>
+          <p class="reason-text"><strong>Speaking invitation</strong> — Invite Jim to speak at your event, organization, or base.</p>
+        </li>
+        <li class="reason">
+          <div class="reason-dot"></div>
+          <p class="reason-text"><strong>Media or press</strong> — We welcome journalists who want to cover this story.</p>
+        </li>
+        <li class="reason">
+          <div class="reason-dot"></div>
+          <p class="reason-text"><strong>You disagree</strong> — That matters too. Tell us why.</p>
+        </li>
+      </ul>
+
+      <div class="direct-contact">
+        <p class="direct-contact-label">Prefer Email?</p>
+        <p class="direct-contact-text">Write directly to <a href="mailto:hello@twosoldiers.org">hello@twosoldiers.org</a></p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="contact-form">
+      <p class="form-head">Send Us A Message</p>
+      <p class="form-sub">There's no template here — just say it.</p>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">First Name</label>
+            <input class="form-input" id="fname" type="text" placeholder="Your first name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lname">Last Name</label>
+            <input class="form-input" id="lname" type="text" placeholder="Your last name" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" id="email" type="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number (Optional)</label>
+          <input class="form-input" id="phone" type="tel" placeholder="+1 (000) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reason">I Am Reaching Out About</label>
+          <select class="form-select" id="reason">
+            <option value="">Select a reason</option>
+            <option value="partnership">Partnership — Tech, humanitarian, or investment</option>
+            <option value="veteran">I am a veteran and want to share my story</option>
+            <option value="donate">I want to donate or support the mission</option>
+            <option value="speaking">Speaking invitation for Jim Blackburn</option>
+            <option value="media">Media or press inquiry</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Your Message</label>
+          <textarea class="form-textarea" id="message" placeholder="Tell us what's on your mind. There's no template here — just say it." required></textarea>
+        </div>
+        <button class="btn-send" type="submit">Send Your Message →</button>
+        <p class="form-note">Your information is never sold or shared.<br>Jim personally reads every message.</p>
+      </form>
+
+      <div id="successMsg" class="success-msg">
+        <p>Thank you. Your message has been received.<br>Jim will respond personally.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PSALM -->
+<section class="psalm">
+  <div class="container-narrow">
+    <p class="psalm-text">"Thou preparest a table before me<br>in the presence of mine enemies."</p>
+    <p class="psalm-ref">Psalm 23 : 5</p>
+  </div>
+</section>
+
+<!-- SHARED FOOTER -->
+<div data-include="/partials/footer.html"></div>
+
+<script src="/js/components.js"></script>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('active');
+  }
+</script>
+</body>
+</html>
