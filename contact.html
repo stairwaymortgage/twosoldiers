@@ -226,48 +226,66 @@
 
     <!-- RIGHT: Form -->
     <div class="contact-form">
-      <p class="form-head">Send Us A Message</p>
-      <p class="form-sub">There's no template here — just say it.</p>
+    <p class="form-head">Send Us A Message</p>
+    <p class="form-sub">There's no template here — just say it.</p>
 
-      <form id="contactForm" onsubmit="handleSubmit(event)">
+    <form id="contactForm">
+
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="fname">First Name</label>
-            <input class="form-input" id="fname" type="text" placeholder="Your first name" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lname">Last Name</label>
-            <input class="form-input" id="lname" type="text" placeholder="Your last name" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email Address</label>
-          <input class="form-input" id="email" type="email" placeholder="your@email.com" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="phone">Phone Number (Optional)</label>
-          <input class="form-input" id="phone" type="tel" placeholder="+1 (000) 000-0000" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="reason">I Am Reaching Out About</label>
-          <select class="form-select" id="reason">
-            <option value="">Select a reason</option>
-            <option value="partnership">Partnership — Tech, humanitarian, or investment</option>
-            <option value="veteran">I am a veteran and want to share my story</option>
-            <option value="donate">I want to donate or support the mission</option>
-            <option value="speaking">Speaking invitation for Jim Blackburn</option>
-            <option value="media">Media or press inquiry</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="message">Your Message</label>
-          <textarea class="form-textarea" id="message" placeholder="Tell us what's on your mind. There's no template here — just say it." required></textarea>
-        </div>
-        <button class="btn-send" type="submit">Send Your Message →</button>
-        <p class="form-note">Your information is never sold or shared.<br>Jim personally reads every message.</p>
-      </form>
+            <div class="form-group">
+                <label class="form-label" for="fname">First Name</label>
+                <input class="form-input" id="fname" name="first_name" type="text" placeholder="Your first name" required>
+            </div>
 
+            <div class="form-group">
+                <label class="form-label" for="lname">Last Name</label>
+                <input class="form-input" id="lname" name="last_name" type="text" placeholder="Your last name" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" id="email" name="email" type="email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="phone">Phone Number (Optional)</label>
+            <input class="form-input" id="phone" name="phone" type="tel" placeholder="+1 (000) 000-0000">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="reason">I Am Reaching Out About</label>
+            <select class="form-select" id="reason" name="reason">
+                <option value="">Select a reason</option>
+                <option value="partnership">Partnership — Tech, humanitarian, or investment</option>
+                <option value="veteran">I am a veteran and want to share my story</option>
+                <option value="donate">I want to donate or support the mission</option>
+                <option value="speaking">Speaking invitation for Jim Blackburn</option>
+                <option value="media">Media or press inquiry</option>
+                <option value="other">Something else</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="message">Your Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us what's on your mind. There's no template here — just say it." required></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="New Contact Form Submission">
+
+        <button class="btn-send" type="submit">
+            Send Your Message →
+        </button>
+
+        <p id="form-status"></p>
+
+        <p class="form-note">
+            Your information is never sold or shared.<br>
+            Jim personally reads every message.
+        </p>
+
+    </form>
+</div>
       <div id="successMsg" class="success-msg">
         <p>Thank you. Your message has been received.<br>Jim will respond personally.</p>
       </div>
@@ -294,6 +312,66 @@
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('successMsg').classList.add('active');
   }
+</script>
+  <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", async function(e){
+
+        e.preventDefault();
+
+        const status = document.getElementById("form-status");
+        const button = form.querySelector(".btn-send");
+
+        button.disabled = true;
+        button.innerText = "Sending...";
+
+        status.innerHTML = "";
+
+        const formData = new FormData(form);
+
+        try{
+
+            const response = await fetch(
+                "https://formspree.io/f/mykvnzpk",
+                {
+                    method: "POST",
+                    body: formData,
+                    headers:{
+                        Accept:"application/json"
+                    }
+                }
+            );
+
+            if(response.ok){
+
+                status.innerHTML = "✅ Message sent successfully!";
+                status.style.color = "green";
+
+                form.reset();
+
+            }else{
+
+                status.innerHTML = "❌ Something went wrong.";
+                status.style.color = "red";
+
+            }
+
+        }catch(error){
+
+            status.innerHTML = "❌ Network error.";
+            status.style.color = "red";
+
+        }
+
+        button.disabled = false;
+        button.innerText = "Send Your Message →";
+
+    });
+
+});
 </script>
 </body>
 </html>
